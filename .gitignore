@@ -1,14 +1,35 @@
 # Compiled class file
 *.class
 
+# IntelliJ IDEA projects
+.idea/
+*.iws
+*.iml
+
 # Log file
 *.log
 
-# BlueJ files
-*.ctxt
+# Local configuration file (sensitive data)
+local.properties
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# User-specific settings
+.idea_modules/
+.idea/libraries/
+.idea/caches/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/vcs.xml
+.idea/contentGateway.xml
+
+# SBT projects
+project/
+
+# Maven projects
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
 
 # Package Files #
 *.jar
