@@ -1,6 +1,6 @@
-# TALLER 2: DISEÑO Y ESTRUCTURACIÓN DE APLICACIONES DISTRIBUIDAS EN INTERNET
+# TALLER 3: MICROFRAMEWORKS WEB
 
-Este proyecto de Java se desarrolló con la intención de abordar las conexiones HTTP (tanto cliente como servidor). Con esto en mente, el código de este proyecto permite usar un cliente JavaScript que puede buscar información acerca de distintas películas, si bien, esto es lo que el cliente experimenta (Una búsqueda sencilla de información relacionada con un filme), realmente lo que se está haciendo es una serie de peticiones tipo HTTP a un servidor fachada creado por este mismo código, una vez recibida la petición el servidor busca en su cache para verificar si ya tiene registro de esa película, en caso de tenerla retorna lo que tiene almacenado, si no tiene registro, realiza la consulta a un API público. La novedad en esta entrega es, que el servidor tiene la capacidad de leer archivos en disco, soporta archivos HTML, CSS, JS e imágenes JPG.
+Este programa fue creado para simular el microframework Spark a través de funciones lambda, soportando peticiones de tipo GET y POST. También podrá leer archivos alojados en el disco, estos archivos pueden contener las extensiones HTML, JS, CSS o incluso imágenes.
 
 ## Para Comenzar
 
@@ -9,7 +9,7 @@ Este proyecto de Java se desarrolló con la intención de abordar las conexiones
 En primera instancia, debemos obtener el código del proyecto, por lo que se ejecutara el comando desde consola. (tenga en cuenta que debe estar en la carpeta deseada antes de clonar el repositorio)
 
 ~~~
-https://github.com/JordyBautista10/AREP-Taller-2.git
+https://github.com/JordyBautista10/AREP-Taller-3.git
 ~~~
 
 Posteriormente, descargamos las dependencias necesarias y compilamos el código
@@ -20,39 +20,49 @@ mvn clean install compile
 
 #### Ejecución
 
-Para correr este codigo usando un ID, hay que ingresar a la carpeta que se muestra acontinuacion y ejecutar el archivo llamado Main.java
+Para correr este codigo usando un ID, hay que ingresar a la carpeta que se muestra a continuación y ejecutar el archivo llamado App.java
 
-![image](https://github.com/JordyBautista10/AREP-Taller-2/assets/123812969/01072a26-8b49-465d-aa09-da12f2be0e83)
+![image](https://github.com/JordyBautista10/AREP-Taller-3/assets/123812969/8274fdab-d50b-4c15-aae4-7221907618f6)
+
 
 #### Funcionamiento
+Este proyecto manejará dos formas de visualizar el contenido del servidor, la primera es accediendo a los archivos y la segunda es mediante la petición GET creada con el lambda
 
-Una vez el código esté corriendo debemos poner la siguiente dirección URL en el navegador
-
-~~~
-http://localhost:35000/index.html
-~~~
-
-Hecho esto, Deberia aparecer una pagian de este estilo
-
-![image](https://github.com/JordyBautista10/AREP-Taller-1/assets/123812969/0b4a4017-a921-4c0a-9842-bcb1d93fd39a)
-
-Únicamente lo que resta es colocar el nombre de la película que se desea buscar, para el siguiente ejemplo se buscara la información de la película, avatar, así qué una vez puesto el nombre de la película se da clic en el botón de Submit
-
-![image](https://github.com/JordyBautista10/AREP-Taller-1/assets/123812969/846b58ce-45de-492c-8e2b-3b16013bc6ec)
-
-Este deberia ser el resultado
-
-![image](https://github.com/JordyBautista10/AREP-Taller-1/assets/123812969/cfd735ef-8d29-4c4d-8208-ae8f45122abf)
-
-Si lo que desea es ver una imagen dentro del servidor, agregué una imagen en la carpeta /resources/public y búsquela por su nombre, en el siguiente ejemplo se añadió la imagen Nitro.jpg, por lo que se busca de la siguiente manera:
+Primero, la versión sin lambda, la cual consiste en simplemente colocar el nombre del archivo dentro de la carpeta /target/classes/public, como ejemplo, podemos buscar los elementos index.html o nitro.jpg
 
 ~~~
-http://localhost:35000/nitro.jpg
+http://localhost:35000/[archivo que desee observar]
 ~~~
 
-Deberia verse de la siguiente forma:
+Ahora bien, para la petición GET, debemos poner la siguiente dirección URL en el navegador, he indicar el archivo que desea consultar (solamente traerá el archivo en mención sin tener en cuenta sus complementos)
 
-![image](https://github.com/JordyBautista10/AREP-Taller-2/assets/123812969/d0a6adf7-0d77-42ab-9899-475bb8e50e9d)
+~~~
+http://localhost:35000/action/[archivo que desee observar]
+~~~
+
+La peticion de Index.html deberia verse asi:
+
+![image](https://github.com/JordyBautista10/AREP-Taller-3/assets/123812969/0ead8365-ff22-48f4-a019-302df7b57cd3)
+
+Ahora, para las peticiones POST se debe realizar el mismo tipo de petición a la siguiente URL. Cabe aclarar que la información que este método retorna es el caché del API fachada, por lo que a medida que se vayan buscando películas, el resultado de esta petición será más grande
+
+~~~
+http://localhost:35000/action
+~~~
+
+Por ejemplo, si no se han buscado peliculas, la peticion POST entregara:
+
+![image](https://github.com/JordyBautista10/AREP-Taller-3/assets/123812969/f2dbef2e-15f9-4f6f-86fd-f8eb2aba9850)
+
+Sin embargo luego de hacer varias consultas el resultado será:
+
+![image](https://github.com/JordyBautista10/AREP-Taller-3/assets/123812969/60519529-184a-4cd9-8766-308e14bf3afa)
+
+Estos resultados tambien se pueden evidenciar, pulsando el segundo boton que aparece en la pagina principal "index.html"
+
+### Arquitectura
+#### App
+Es el método el cual actúa como clase main del programa y configura el path que recibirá el método get y como retornará la información retornada por este mismo
 
 ### Prerequisitos
 
