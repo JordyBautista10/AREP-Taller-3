@@ -62,7 +62,16 @@ Estos resultados tambien se pueden evidenciar, pulsando el segundo boton que apa
 
 ### Arquitectura
 #### App
-Es el método el cual actúa como clase main del programa y configura el path que recibirá el método get y como retornará la información retornada por este mismo
+Es el método el cual actúa como clase main del programa y configura el path que recibirá el método get y como retornará la información retornada por este mismo.
+
+#### JordySpark
+Esta clase funciona como la simulación de Spark, pues tiene los métodos necesarios, para abrir la conexión, recibir las peticiones, tratarlas, ponerles sus respectivos encabezados y enviar la información al cliente. Esta clase define el metodo get que usa la clase App ya mencionada.
+
+### Uso del framework para desarrollador
+Si se quiere añadir un nuevo endpoint para configurar un comportamiento distinto, se debe acceder al la clase JordySpark y añadir un nuevo else if donde se indique cuál es el nuevo endpoint y el comportamiento se definiría diferente, también se puede usar la variable "method" si lo que se quiere es restringir o cambiar el comportamiento según el tipo de petición que llegue.
+
+![image](https://github.com/JordyBautista10/AREP-Taller-3/assets/123812969/28e6f502-9409-41c8-9679-af90f8ff18a4)
+
 
 ### Prerequisitos
 
