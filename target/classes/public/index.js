@@ -40,6 +40,15 @@ function loadGetMsg() {
   xhttp.send();
 }
 
+function loadPostMsg() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("getrespmsg").innerHTML = this.responseText;
+  };
+  xhttp.open("POST", "http://localhost:35000/action/cache");
+  xhttp.send();
+}
+
 function formatRanking(ranking) {
   let html = '<table border="1">';
   html += '<tr><th>Source</th><th>Value</th></tr>';
